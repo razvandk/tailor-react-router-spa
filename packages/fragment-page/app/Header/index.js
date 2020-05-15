@@ -45,7 +45,7 @@ class Header extends Component {
         </Link>
         <Link to="/mobile">
           <NavItem
-            active={2 === this.state.active}
+            active={3 === this.state.active}
             onClick={() => this.selectNavItem(3)}
             name="Mobile"
           />
