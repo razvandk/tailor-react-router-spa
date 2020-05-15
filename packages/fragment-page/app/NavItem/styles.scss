@@ -6,6 +6,9 @@
     transition: all .3s;
     border-radius: 3px;
     background: #81a1c1;
+    color: #ffffff;
+    text-align: center;
+
     &:not(.current):hover {
         background: lighten(#81a1c1, 10%);
     }

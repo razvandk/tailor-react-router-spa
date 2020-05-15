@@ -1,26 +1,16 @@
-import React, { Component } from 'react'
-import { bool, func, number } from 'prop-types'
-import './styles.scss'
-import classNames from 'classnames'
+import React from "react";
+import cx from "classnames";
+import "./styles.scss";
 
-class NavItem extends Component {
-  render() {
-    const { onClick, active } = this.props
-    const classes = classNames({
-      'nav-item': true,
-      'current': active
-    })
+const NavItem = ({ onClick, active, name }) => (
+  <div
+    className={cx("nav-item", {
+      current: active,
+    })}
+    onClick={onClick}
+  >
+    {name}
+  </div>
+);
 
-    return (
-      <div className={classes} onClick={onClick}></div>
-    )
-  }
-
-}
-
-NavItem.propTypes = {
-  active: bool,
-  onClick: func
-}
-
-export default NavItem
+export default NavItem;

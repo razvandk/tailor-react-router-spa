@@ -1,16 +1,20 @@
-import React, { Component } from 'react'
-import './styles.scss'
+import React from "react";
+import cx from "classnames";
+import "./styles.scss";
 
-class Contact extends Component {
-  render() {
-    return(
-      <div className="contact">
-        <div className="contact-details">
+const Contact = ({ gender, name: { title, first, last }, email }) => (
+  <div className="contact">
+    <div
+      className={cx("contact-details", {
+        "contact-details--female": gender === "female",
+      })}
+    >
+      <h3>
+        {title} {first} {last}
+      </h3>
+      <p>{email}</p>
+    </div>
+  </div>
+);
 
-        </div>
-      </div>
-    )
-  }
-}
-
-export default Contact
+export default Contact;
