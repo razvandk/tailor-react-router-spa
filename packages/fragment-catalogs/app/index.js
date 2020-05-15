@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-import { render } from 'react-dom'
-import Routes from './routes.jsx'
+import React, { Component } from "react";
+import { render } from "react-dom";
+import Routes from "./routes.jsx";
 
-render(<Routes/>, document.getElementById('catalogs'))
+render(<Routes />, document.getElementById("catalogs"));
