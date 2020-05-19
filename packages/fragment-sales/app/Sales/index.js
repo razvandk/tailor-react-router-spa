@@ -1,18 +1,10 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import "./styles.scss";
 
 class Sales extends Component {
-  state = {
-    counter: 0,
-  };
-
-  onIncrement = () => {
-    const { counter } = this.state;
-    this.setState(counter + 1);
-  };
-
   render() {
-    const { counter } = this.state;
+    const { onIncrement, counter } = this.props;
 
     return (
       <div className="sales">
@@ -30,4 +22,10 @@ class Sales extends Component {
   }
 }
 
-export default Sales;
+const mapProps = (counter) => ({ counter });
+
+const mapActions = {
+  onIncrement: () => ({ type: "INCREMENT_SALES" }),
+};
+
+export default connect(mapProps, mapActions)(Sales);

@@ -2,9 +2,9 @@ import { createStore, compose } from "redux";
 
 function counter(state = 0, action) {
   switch (action.type) {
-    case "INCREMENT_CATALOGS":
+    case "INCREMENT_SALES":
       return state + 1;
-    case "DECREMENT_CATALOGS":
+    case "DECREMENT_SALES":
       return state - 1;
     default:
       return state;

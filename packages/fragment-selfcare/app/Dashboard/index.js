@@ -4,7 +4,7 @@ import axios from "axios";
 import Contact from "../Contact";
 import "./styles.scss";
 
-class Contacts extends Component {
+class Dashboard extends Component {
   componentWillMount() {
     this.fetchContacts();
   }
@@ -39,4 +39,4 @@ const mapActions = {
   setContacts: (contacts) => ({ type: "SET_CONTACTS", contacts }),
 };
 
-export default connect(mapProps, mapActions)(Contacts);
+export default connect(mapProps, mapActions)(Dashboard);

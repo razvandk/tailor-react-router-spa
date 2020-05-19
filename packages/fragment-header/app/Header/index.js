@@ -29,18 +29,11 @@ class Header extends Component {
         <Link to="/" onClick={() => this.selectNavItem(0)}>
           <Logo />
         </Link>
-        <Link to="/contacts">
-          <NavItem
-            active={1 === this.state.active}
-            onClick={() => this.selectNavItem(1)}
-            name="Contacts"
-          />
-        </Link>
-        <Link to="/catalogs">
+        <Link to="/sales">
           <NavItem
             active={2 === this.state.active}
             onClick={() => this.selectNavItem(2)}
-            name="Catalogs"
+            name="Sales"
           />
         </Link>
         <Link to="/mobile">
@@ -48,6 +41,13 @@ class Header extends Component {
             active={3 === this.state.active}
             onClick={() => this.selectNavItem(3)}
             name="Mobile"
+          />
+        </Link>
+        <Link to="/settings">
+          <NavItem
+            active={1 === this.state.active}
+            onClick={() => this.selectNavItem(1)}
+            name="Settings "
           />
         </Link>
       </div>
