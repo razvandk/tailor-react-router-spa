@@ -4,7 +4,7 @@ import "./styles.scss";
 import NavItem from "../NavItem";
 import Logo from "../Logo";
 
-const items = [0, 1, 2, 3];
+const items = [0, 1, 2, 3, 4];
 
 class Header extends Component {
   constructor(props) {
@@ -29,6 +29,13 @@ class Header extends Component {
         <Link to="/" onClick={() => this.selectNavItem(0)}>
           <Logo />
         </Link>
+        <Link to="/dashboard">
+          <NavItem
+            active={1 === this.state.active}
+            onClick={() => this.selectNavItem(1)}
+            name="Dashboard"
+          />
+        </Link>
         <Link to="/sales">
           <NavItem
             active={2 === this.state.active}
@@ -45,8 +52,8 @@ class Header extends Component {
         </Link>
         <Link to="/settings">
           <NavItem
-            active={1 === this.state.active}
-            onClick={() => this.selectNavItem(1)}
+            active={4 === this.state.active}
+            onClick={() => this.selectNavItem(4)}
             name="Settings "
           />
         </Link>
