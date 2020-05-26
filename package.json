@@ -21,9 +21,6 @@
   },
   "homepage": "https://github.com/tsnolan23/mosaic-tailor-react-example#readme",
   "devDependencies": {
-    "eslint": "^7.1.0",
-    "eslint-plugin-react": "^7.20.0",
-    "eslint-plugin-react-hooks": "^4.0.3",
     "lerna": "^3.22.0",
     "node-tailor": "^3.9.2",
     "webpack": "^4.43.0"
