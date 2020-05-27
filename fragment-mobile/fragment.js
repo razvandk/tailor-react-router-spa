@@ -1,23 +1,36 @@
-const http = require("http");
-const url = require("url");
-const fs = require("fs");
+const express = require("express");
+var cors = require("cors");
+const path = require("path");
+const fragmentServer = express();
 
-const server = http.createServer((req, res) => {
-  const pathname = url.parse(req.url).pathname;
-  const jsHeader = { "Content-Type": "application/javascript" };
-  switch (pathname) {
-    case "/public/bundle.js":
-      res.writeHead(200, jsHeader);
-      return fs.createReadStream("./public/bundle.js").pipe(res);
-    default:
-      res.writeHead(200, {
-        "Content-Type": "text/html",
-        Link: '<http://localhost:5017/public/bundle.js>; rel="fragment-script"',
-      });
-      return res.end("");
-  }
+const port = 5017;
+
+fragmentServer.use(cors());
+
+fragmentServer.get("/msisdn/:id", function (req, res) {
+  const id = req.params.id;
+  const msisdn = parseInt(id) === 123456 ? "40 40 40 40" : "50 50 50 50";
+  const subscriptionPlan =
+    parseInt(id) === 123456 ? "Fri Tale + 60GB Data" : "Fri Tale + Fri Data";
+
+  const data = { msisdn, subscriptionPlan };
+  console.log("Get MSISDN " + JSON.stringify(data));
+  res.json(data);
 });
 
-server.listen(5017, () => {
-  console.log("SPA Fragment Server started at 5017");
+fragmentServer.get("/public/bundle.js", function (req, res) {
+  res.append("Content-Type", "application/javascript");
+  res.sendFile(path.join(__dirname, "public/bundle.js"));
+});
+
+fragmentServer.get("*", function (req, res) {
+  res.append("Content-Type", "text/html");
+  res.links({
+    "fragment-script": "http://localhost:5017/public/bundle.js",
+  });
+  res.end();
+});
+
+fragmentServer.listen(port, () => {
+  console.log(`Mobile Fragment Server started at port ${port}!`);
 });

@@ -4,7 +4,12 @@
     <style>
       body {
         background: #eceff4;
-        padding-top: 100px;
+        margin: 0;
+      }
+      .ys-content {
+        min-height: calc(100vh - 180px); /* viewportHeight - header - footer */
+        box-sizing: border-box;
+        padding: 100px 0 50px;
       }
     </style>
     <script>
@@ -30,9 +35,11 @@
 
   <body>
     <div id="header"></div>
-    <div id="selfcare"></div>
-    <div id="sales"></div>
-    <div id="mobile"></div>
+    <div class="ys-content">
+      <div id="selfcare"></div>
+      <div id="sales"></div>
+      <div id="mobile"></div>
+    </div>
     <div id="footer"></div>
     <div id="chat"></div>
     <fragment src="http://localhost:8280"></fragment>
