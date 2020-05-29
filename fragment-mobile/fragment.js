@@ -3,7 +3,7 @@ var cors = require("cors");
 const path = require("path");
 const fragmentServer = express();
 
-const port = 5017;
+const port = 8080;
 
 fragmentServer.use(cors());
 
@@ -26,7 +26,7 @@ fragmentServer.get("/public/bundle.js", function (req, res) {
 fragmentServer.get("*", function (req, res) {
   res.append("Content-Type", "text/html");
   res.links({
-    "fragment-script": "http://localhost:5017/public/bundle.js",
+    "fragment-script": "https://mobile.beta-c-onboarding-eu-north-1.aws.c.dk/fragment-mobile/public/bundle.js",
   });
   res.end();
 });

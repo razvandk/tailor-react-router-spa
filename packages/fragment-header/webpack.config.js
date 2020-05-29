@@ -1,4 +1,5 @@
 var webpack = require('webpack')
+const nodeExternals = require('webpack-node-externals');
 
 module.exports = {
   entry: './app/index.js',
@@ -21,10 +22,14 @@ module.exports = {
       }
     ]
   },
-  externals: {
-    'react': 'react',
-    'react-dom': 'react-dom',
-    'react-router': 'react-router',
-    'classnames': 'classnames'
-  }
+
+  target: 'node',
+
+  externals: [nodeExternals()],
+  // externals: {
+  //   'react': 'react',
+  //   'react-dom': 'react-dom',
+  //   'react-router': 'react-router',
+  //   'classnames': 'classnames'
+  // }
 }

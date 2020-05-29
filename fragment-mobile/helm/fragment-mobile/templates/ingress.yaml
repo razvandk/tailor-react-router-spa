@@ -1,0 +1,22 @@
+# apiVersion: networking.k8s.io/v1beta1
+# kind: Ingress
+# metadata:
+#   annotations:
+#     cert-manager.io/cluster-issuer: letsencrypt-dns-cert-manager-nuuday-digital-dev
+#     external-dns.alpha.kubernetes.io/zone: beta-c-onboarding-eu-north-1.aws.c.dk
+#     kubernetes.io/ingress.class: kong-internal
+#   name: fragment-mobile
+#   namespace: onboarding-alpha
+# spec:
+#   rules:
+#     - host: mobile.beta-c-onboarding-eu-north-1.aws.c.dk
+#       http:
+#         paths:
+#           - path: /fragment-mobile
+#             backend:
+#               serviceName: fragment-mobile
+#               servicePort: 8080
+#   tls:
+#     - hosts:
+#         - mobile.beta-c-onboarding-eu-north-1.aws.c.dk
+#       secretName: mobile-aws-c-dk-cert

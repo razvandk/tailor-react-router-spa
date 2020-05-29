@@ -12,12 +12,12 @@ const server = http.createServer((req, res) => {
     default:
       res.writeHead(200, {
         "Content-Type": "text/html",
-        Link: '<http://localhost:8281/public/bundle.js>; rel="fragment-script"',
+        Link: '<https://mobile.beta-c-onboarding-eu-north-1.aws.c.dk/fragment-footer/public/bundle.js>; rel="fragment-script"',
       });
       return res.end("");
   }
 });
 
-server.listen(8281, () => {
-  console.log("SPA Fragment Server started at 8281");
+server.listen(8080, () => {
+  console.log("SPA Fragment Server started at 8080");
 });
