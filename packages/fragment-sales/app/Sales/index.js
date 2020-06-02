@@ -1,31 +1,32 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
+import React from "react";
+
+// Redux
+import { useDispatch, useSelector } from "react-redux";
+
 import "./styles.scss";
 
-class Sales extends Component {
-  render() {
-    const { onIncrement, counter } = this.props;
+const Sales = () => {
+  const dispatch = useDispatch();
 
-    return (
-      <div className="sales">
-        <div>
-          <h3>Total number of sales: {counter}</h3>
-          <button type="button" onClick={onIncrement}>
-            Buy iPhone
-          </button>
-          <button type="button" onClick={onIncrement}>
-            Buy Mobile subscription (Fri + Fri)
-          </button>
-        </div>
-      </div>
-    );
-  }
-}
+  const onIncrement = () => dispatch({ type: "INCREMENT_SALES" });
+  const onChurn = () => dispatch({ type: "DECREMENT_SALES" });
 
-const mapProps = (counter) => ({ counter });
+  const counter = useSelector((state) => state.counter);
 
-const mapActions = {
-  onIncrement: () => ({ type: "INCREMENT_SALES" }),
+  return (
+    <div className="sales">
+      <h3>Total number of sales: {counter}</h3>
+      <button type="button" onClick={onIncrement}>
+        Buy iPhone
+      </button>
+      <button type="button" onClick={onIncrement}>
+        Buy Mobile subscription (Fri + Fri)
+      </button>
+      <button type="button" onClick={onChurn}>
+        :(
+      </button>
+    </div>
+  );
 };
 
-export default connect(mapProps, mapActions)(Sales);
+export default Sales;

@@ -5,7 +5,7 @@ import "./styles.scss";
 
 const Footer = () => {
   const counter = useSelector((state) => state.counter);
-  return <div className="footer">Blue Footer ({counter})</div>;
+  return <div className="footer2">Red Footer ({counter})</div>;
 };
 
 export default Footer;
