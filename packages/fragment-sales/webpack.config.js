@@ -3,6 +3,7 @@ var webpack = require('webpack')
 module.exports = {
   entry: './app/index.js',
   devtool: 'source-map',
+  mode: "production",
   output: {
     path: __dirname + '/public',
     publicPath: 'http://localhost:8080/public/',
