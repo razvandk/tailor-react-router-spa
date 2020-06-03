@@ -25,5 +25,8 @@
     "lerna": "^3.22.0",
     "node-tailor": "^3.9.2",
     "webpack": "^4.43.0"
+  },
+  "dependencies": {
+    "dotenv": "^8.2.0"
   }
 }
