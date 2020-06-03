@@ -38,16 +38,19 @@ service:
 
 ingress:
   enabled: false
-  annotations: {}
-    # kubernetes.io/ingress.class: nginx
-    # kubernetes.io/tls-acme: "true"
+  annotations:
+      kubernetes.io/ingress.class: kong-internal
+      cert-manager.io/cluster-issuer: letsencrypt-dns-cert-manager-nuuday-digital-dev
+      external-dns.alpha.kubernetes.io/zone: beta-c-onboarding-eu-north-1.aws.c.dk
   hosts:
-    - host: chart-example.local
-      paths: []
-  tls: []
-  #  - secretName: chart-example-tls
-  #    hosts:
-  #      - chart-example.local
+    - host: mobile.beta-c-onboarding-eu-north-1.aws.c.dk
+      paths:
+        - /fragment-mobile
+
+  tls: 
+    - secretName: mobile-aws-c-dk-cert
+      hosts:
+        - mobile.beta-c-onboarding-eu-north-1.aws.c.dk
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
