@@ -1,42 +1,24 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Contact from "../Contact";
 import "./styles.scss";
 
-class Dashboard extends Component {
-  componentWillMount() {
-    this.fetchContacts();
-  }
+const Dashboard = () => {
+  const [contacts, setContacts] = useState([]);
 
-  fetchContacts() {
-    const { setContacts } = this.props;
+  useEffect(() => {
+    axios
+      .get("https://randomuser.me/api/?results=20")
+      .then(({ data: { results } }) => setContacts(results));
+  }, []);
 
-    axios.get("https://randomuser.me/api/?results=20").then((response) => {
-      setContacts(response.data.results);
-    });
-  }
-
-  render() {
-    const { contacts } = this.props;
-
-    return (
-      <div className="contacts">
-        {contacts.length > 0 &&
-          contacts.map((contact) => {
-            return <Contact key={contact.id.value} {...contact} />;
-          })}
-      </div>
-    );
-  }
-}
-
-const mapProps = ({ contacts }) => {
-  return { contacts };
+  return (
+    <div className="contacts">
+      {contacts.map((contact) => {
+        return <Contact key={contact.id.value} {...contact} />;
+      })}
+    </div>
+  );
 };
 
-const mapActions = {
-  setContacts: (contacts) => ({ type: "SET_CONTACTS", contacts }),
-};
-
-export default connect(mapProps, mapActions)(Dashboard);
+export default Dashboard;

@@ -1,30 +1,31 @@
-var webpack = require('webpack')
+var webpack = require("webpack");
 
 module.exports = {
-  entry: './app/index.js',
+  entry: "./app/index.js",
+  mode: "production",
   output: {
-    path: __dirname + '/public',
-    publicPath: 'http://localhost:8080/public/',
-    filename: 'bundle.js',
-    libraryTarget: 'amd'
+    path: __dirname + "/public",
+    publicPath: "http://localhost:8080/public/",
+    filename: "bundle.js",
+    libraryTarget: "amd",
   },
   module: {
     rules: [
       {
         test: /\.js(x)?$/,
         exclude: /node_modules/,
-        loader: 'babel-loader'
+        loader: "babel-loader",
       },
       {
         test: /\.scss$/,
-        loader: 'style-loader!css-loader!sass-loader'
-      }
-    ]
+        loader: "style-loader!css-loader!sass-loader",
+      },
+    ],
   },
   externals: {
-    'react': 'react',
-    'react-dom': 'react-dom',
-    'react-router': 'react-router',
-    'classnames': 'classnames'
-  }
-}
+    react: "react",
+    "react-dom": "react-dom",
+    "react-router": "react-router",
+    classnames: "classnames",
+  },
+};
