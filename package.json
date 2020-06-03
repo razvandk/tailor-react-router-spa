@@ -6,6 +6,7 @@
   "scripts": {
     "start": "node tailor.js",
     "install-fragment-dependencies": "lerna bootstrap",
+    "inst": "lerna link && lerna exec npm i",
     "build-fragments": "lerna run build",
     "watch-fragments": "lerna run watch",
     "start-fragments": "lerna run start --stream --parallel"
