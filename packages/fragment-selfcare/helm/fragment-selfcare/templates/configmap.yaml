@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: fragment-selfcare
+  namespace: onboarding-alpha
+data:
+  HOST: https://mobile.beta-c-onboarding-eu-north-1.aws.c.dk
+  PORT: '8080'

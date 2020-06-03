@@ -2,6 +2,9 @@ const http = require('http')
 const url = require('url')
 const fs = require('fs')
 
+const HOST = process.env.HOST
+const PORT = process.env.PORT
+
 const server = http.createServer((req, res) => {
   const pathname = url.parse(req.url).pathname
   const jsHeader = { 'Content-Type': 'application/javascript' }
@@ -12,12 +15,12 @@ const server = http.createServer((req, res) => {
     default:
       res.writeHead(200, {
         'Content-Type': 'text/html',
-        'Link': '<http://localhost:5000/public/bundle.js>; rel="fragment-script"'
+        'Link': `<${HOST}/fragment-selfcare/public/bundle.js>; rel="fragment-script"`
       })
       return res.end('')
   }
 })
 
-server.listen(5000, () => {
-  console.log('SPA Fragment Server started at 5000')
+server.listen(PORT, () => {
+  console.log('SPA Fragment Server started at %s', PORT)
 })

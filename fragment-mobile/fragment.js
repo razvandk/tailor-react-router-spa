@@ -3,7 +3,8 @@ var cors = require("cors");
 const path = require("path");
 const fragmentServer = express();
 
-const port = 5017;
+const HOST = process.env.HOST;
+const PORT = process.env.PORT;
 
 fragmentServer.use(cors());
 
@@ -26,11 +27,11 @@ fragmentServer.get("/public/bundle.js", function (req, res) {
 fragmentServer.get("*", function (req, res) {
   res.append("Content-Type", "text/html");
   res.links({
-    "fragment-script": "http://localhost:5017/public/bundle.js",
+    "fragment-script": `${HOST}/fragment-mobile/public/bundle.js`,
   });
   res.end();
 });
 
-fragmentServer.listen(port, () => {
-  console.log(`Mobile Fragment Server started at port ${port}!`);
+fragmentServer.listen(PORT, () => {
+  console.log(`Mobile Fragment Server started at port ${PORT}!`);
 });

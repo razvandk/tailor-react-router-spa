@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: "{{ include "fragment-common.fullname" . }}-test-connection"
+  labels:
+    {{- include "fragment-common.labels" . | nindent 4 }}
+  annotations:
+    "helm.sh/hook": test-success
+spec:
+  containers:
+    - name: wget
+      image: busybox
+      command: ['wget']
+      args: ['{{ include "fragment-common.fullname" . }}:{{ .Values.service.port }}']
+  restartPolicy: Never
