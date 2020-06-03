@@ -33,7 +33,7 @@ service:
   port: 8080
 
 ingress:
-  enabled: true
+  enabled: false
   annotations:
       kubernetes.io/ingress.class: kong-internal
       cert-manager.io/cluster-issuer: letsencrypt-dns-cert-manager-nuuday-digital-dev
